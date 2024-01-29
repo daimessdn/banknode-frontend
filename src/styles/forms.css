@@ -1,0 +1,59 @@
+:root {
+    /*
+        color references:
+        https://coolors.co/483d3f-058ed9-f4ebd9-a39a92-77685d
+    */
+
+    --primary: #058ED9;
+    --secondary: #F4EBD9;
+    --outline: #483D3F;
+    --text: #483D3F;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    font-size: .875rem;
+    margin-bottom: .5rem;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    font-size: 1rem;
+    padding: .7rem;
+    
+    border: 1.5px solid var(--outline);
+    border-radius: .5rem;
+
+    background-color: var(--secondary);
+    color: var(--text);
+
+}
+
+.btn {
+    padding: .5rem 1rem;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    border: 1.5px solid var(--primary);
+
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+
+.btn-secondary {
+    border: 1.5px solid var(--outline);
+    
+    background-color: var(--secondary);
+    color: var(--text);
+}
+
+.btn-group {
+    display: flex;
+    gap: .5rem;
+}
