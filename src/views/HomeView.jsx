@@ -138,7 +138,7 @@ function HomeView() {
             </li>
 
             <li>
-              <Link to={"/home"} className="nav-footer-link">
+              <Link to={"/transfer"} className="nav-footer-link">
                 <HiArrowsRightLeft size={32} />
                 <span>Transfer</span>
               </Link>

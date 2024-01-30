@@ -102,7 +102,8 @@ main {
     font-size: 2rem;
 }
 
-.transaction-history-container {
+.transaction-history-container,
+.transaction-recents-container {
     display: flex;
     flex-direction: column;
 
@@ -111,13 +112,21 @@ main {
     margin: 0;
 }
 
-.transaction-history-item {
+.transaction-history-item,
+.transaction-recents-item {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
     background-color: var(--secondary);
 
     border-top: 1px solid var(--outline);
     border-bottom: 1px solid var(--outline);
     margin-top: .5rem;
+}
+
+.transaction-recents-item {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem;
 }
 
 .transaction-details-container {
@@ -137,8 +146,10 @@ main {
 }
 
 .transaction-detail-label {
-    font-size: .875rem;
+    display: block;
+    font-size: .85rem !important;
     font-weight: 700;
+    margin-bottom: .25rem !important;
 }
 
 .transaction-detail-item {
@@ -148,6 +159,16 @@ main {
 
 .transaction-history-item a {
     color: var(--text) !important;
+}
+
+.transfer-account {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.transfer-name {
+    font-size: .85rem;
+    margin-bottom: 0rem;
 }
 
 .balance-in,

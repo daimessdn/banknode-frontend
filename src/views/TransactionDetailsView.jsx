@@ -121,33 +121,6 @@ function TransactionDetailsView() {
           </section>
         </div>
       </main>
-
-      {/* <div className="container">
-        <nav className="nav-footer">
-          <ul>
-            <li>
-              <Link to={"/home"} className="nav-footer-link">
-                <HiHome size={32} />
-                <span>Home</span>
-              </Link>
-            </li>
-
-            <li>
-              <Link to={"/home"} className="nav-footer-link">
-                <HiArrowsRightLeft size={32} />
-                <span>Transfer</span>
-              </Link>
-            </li>
-
-            <li>
-              <Link to={"/profile"} className="nav-footer-link">
-                <HiUser size={32} />
-                <span>Profile</span>
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div> */}
     </>
   );
 }

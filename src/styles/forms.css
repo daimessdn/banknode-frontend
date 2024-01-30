@@ -22,10 +22,14 @@
     margin-bottom: .5rem;
 }
 
-.form-group input, .form-group select, .form-group textarea {
+.form-group input,
+.form-group select,
+.form-group textarea {
+    font-family: "Inter Tight", sans-serif;
     font-size: 1rem;
+
     padding: .7rem;
-    
+
     border: 1.5px solid var(--outline);
     border-radius: .5rem;
 
@@ -37,6 +41,8 @@
 .btn {
     padding: .5rem 1rem;
     font-size: 1rem;
+
+    font-family: "Inter Tight", sans-serif;
 }
 
 .btn-primary {
@@ -48,7 +54,7 @@
 
 .btn-secondary {
     border: 1.5px solid var(--outline);
-    
+
     background-color: var(--secondary);
     color: var(--text);
 }
