@@ -1,13 +1,13 @@
 :root {
     /*
         color references:
-        https://coolors.co/483d3f-058ed9-f4ebd9-a39a92-77685d
+        https://coolors.co/palette/3c3744-090c9b-3066be-b4c5e4-fbfff1
     */
 
-    --primary: #058ED9;
-    --secondary: #F4EBD9;
-    --outline: #483D3F;
-    --text: #483D3F;
+    --primary: #090c9b;
+    --secondary: #fbfff1;
+    --outline: #3c3744;
+    --text: #3c3744;
 }
 
 .form-group {

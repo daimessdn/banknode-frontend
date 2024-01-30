@@ -1,0 +1,157 @@
+:root {
+    /*
+        color references:
+        https://coolors.co/palette/3c3744-090c9b-3066be-b4c5e4-fbfff1
+    */
+
+    --primary: #090c9b;
+    --secondary: #fbfff1;
+    --outline: #3c3744;
+    --text: #3c3744;
+
+    --paper: #F9F0E3;
+}
+
+body {
+    background-color: var(--paper);
+}
+
+main {
+    background-color: var(--paper);
+
+    padding: 1rem 0;
+    max-width: 450px;
+    margin: auto;
+}
+
+.card-container {
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: #1E1E24;
+    color: var(--secondary);
+
+    font-weight: 700;
+}
+
+.card-container * {
+    margin: 0;
+}
+
+.mb-4 {
+    margin-bottom: .5rem;
+}
+
+.me-4 {
+    margin-right: .5rem;
+}
+
+.block {
+    display: block;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.items-center {
+    align-items: center;
+}
+
+/* welcome title */
+.welcome-title {
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.card-amount {
+    font-size: 2rem;
+}
+
+.transaction-history-container {
+    display: flex;
+    flex-direction: column;
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.transaction-history-item {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    background-color: var(--secondary);
+
+    border-top: 1px solid var(--outline);
+    border-bottom: 1px solid var(--outline);
+    margin-top: 1rem;
+
+    padding: 1rem .5rem;
+}
+
+.balance-in,
+.balance-out {
+    display: flex;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: .25rem;
+}
+
+.balance-in {
+    color: #62a379;
+}
+
+.balance-out {
+    color: #E54B4B;
+}
+
+.nav-footer {
+    bottom: 0;
+    left: 0;
+
+    z-index: 100;
+
+    padding: 1rem;
+}
+
+.nav-footer ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+}
+
+.nav-footer ul li {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    align-items: center;
+}
+
+.nav-footer-link {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    align-items: center;
+
+    color: var(--text);
+    font-weight: 700;
+}
+
+section {
+    padding: 1rem 0;
+}
+
+.section-title {
+    font-size: 1rem;
+
+    line-height: 1.5;
+    margin-top: 0;
+    margin-bottom: 0;
+}
