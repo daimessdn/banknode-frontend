@@ -31,6 +31,11 @@ main {
     color: var(--secondary);
 
     font-weight: 700;
+    transition: all .3s ease;
+}
+
+.card-container:hover {
+    box-shadow: 0px 2.292px 3.225px -1.458px rgba(0, 0, 0, 0.2), 0px 5px 7.915px 0.625px rgba(0, 0, 0, 0.14), 0px 1.875px 9.580px 1.666px rgba(0, 0, 0, 0.12);
 }
 
 .card-container * {
@@ -57,11 +62,36 @@ main {
     flex-direction: row;
 }
 
+.flex-col {
+    flex-direction: column;
+    padding: 1rem .5rem;
+}
+
 .items-center {
     align-items: center;
 }
 
 /* welcome title */
+.top-container {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    align-items: center;
+}
+
+.top-title {
+    margin: 0;
+}
+
+.top-button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    padding: 0;
+    margin: 0;
+}
+
 .welcome-title {
     font-weight: 700;
     margin-top: 0;
@@ -87,9 +117,37 @@ main {
 
     border-top: 1px solid var(--outline);
     border-bottom: 1px solid var(--outline);
-    margin-top: 1rem;
+    margin-top: .5rem;
+}
 
-    padding: 1rem .5rem;
+.transaction-details-container {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    background-color: var(--secondary);
+
+    padding: 0;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.transaction-details-container p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.transaction-detail-label {
+    font-size: .875rem;
+    font-weight: 700;
+}
+
+.transaction-detail-item {
+    padding: 1rem;
+    border-bottom: 1px dotted var(--outline);
+}
+
+.transaction-history-item a {
+    color: var(--text) !important;
 }
 
 .balance-in,
@@ -109,10 +167,15 @@ main {
 }
 
 .nav-footer {
+    position: fixed;
     bottom: 0;
-    left: 0;
+    left: 50%;
+
+    box-shadow: 0px -25px 20px -20px rgba(0, 0, 0, 0.45);
+    transform: translateX(-50%);
 
     z-index: 100;
+    width: 450px;
 
     padding: 1rem;
 }
@@ -140,7 +203,7 @@ main {
     gap: .25rem;
     align-items: center;
 
-    color: var(--text);
+    color: var(--text) !important;
     font-weight: 700;
 }
 

@@ -4,7 +4,12 @@ import { jwtDecode } from "jwt-decode";
 
 import "../styles/home.css";
 
-import { BsCreditCard, BsHouse, BsPerson } from "react-icons/bs";
+import {
+  HiArrowsRightLeft,
+  HiHome,
+  HiUser,
+  HiCreditCard,
+} from "react-icons/hi2";
 import { Link } from "react-router-dom";
 
 function HomeView() {
@@ -56,7 +61,7 @@ function HomeView() {
             </div>
 
             <div className="flex flex-row items-center">
-              <BsCreditCard size={32} className="block me-4" />{" "}
+              <HiCreditCard size={32} className="block me-4" />{" "}
               <span>{walletNumber.name}</span>
             </div>
           </div>
@@ -72,6 +77,10 @@ function HomeView() {
 
                   const { id, transaction_from, transaction_to } = transaction;
 
+                  const formatDate = new Date(
+                    transaction.createdAt
+                  ).toLocaleString("id-id", { day: "numeric", month: "short" });
+
                   return (
                     <>
                       <li
@@ -85,18 +94,30 @@ function HomeView() {
                           transaction_to
                         }
                       >
-                        <span>
-                          {isMoneyIn
-                            ? `${transaction.transaction_to_details.user_details.name}`
-                            : `${transaction.transaction_from_details.user_details.name}`}
-                        </span>
-
-                        <span
-                          className={isMoneyIn ? "balance-in" : "balance-out"}
+                        <Link
+                          className="flex flex-col"
+                          to={`/transaction/details/${transaction.id}`}
                         >
-                          {transaction &&
-                            transaction.transaction_amount.toLocaleString()}
-                        </span>
+                          <span className="flex flex-row items-center">
+                            <HiArrowsRightLeft
+                              strokeWidth={1}
+                              size={18}
+                              className="me-4"
+                            />
+                            {isMoneyIn
+                              ? `${transaction.transaction_to_details.user_details.name}`
+                              : `${transaction.transaction_from_details.user_details.name}`}{" "}
+                            {`(${formatDate})`}
+                          </span>
+
+                          <span
+                            className={isMoneyIn ? "balance-out" : "balance-in"}
+                          >
+                            {transaction &&
+                              "Rp" +
+                                transaction.transaction_amount.toLocaleString()}
+                          </span>
+                        </Link>
                       </li>
                     </>
                   );
@@ -111,21 +132,21 @@ function HomeView() {
           <ul>
             <li>
               <Link to={"/home"} className="nav-footer-link">
-                <BsHouse size={32} />
+                <HiHome size={32} />
                 <span>Home</span>
               </Link>
             </li>
 
             <li>
               <Link to={"/home"} className="nav-footer-link">
-                <BsCreditCard size={32} />
+                <HiArrowsRightLeft size={32} />
                 <span>Transfer</span>
               </Link>
             </li>
 
             <li>
-              <Link to={"/home"} className="nav-footer-link">
-                <BsPerson size={32} />
+              <Link to={"/profile"} className="nav-footer-link">
+                <HiUser size={32} />
                 <span>Profile</span>
               </Link>
             </li>
