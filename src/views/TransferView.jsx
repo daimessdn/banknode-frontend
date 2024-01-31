@@ -78,6 +78,11 @@ function TransferView() {
     loadTransaction();
   }, []);
 
+  const walletNumberFormat = (num) => {
+    const result = num.match(/.{1,4}/g) ?? [];
+    return result.join(" ");
+  };
+
   return (
     <>
       <main>
@@ -169,7 +174,9 @@ function TransferView() {
                           {transfer.user_details.name}
                         </span>
 
-                        <span className="transfer-account">{name}</span>
+                        <span className="transfer-account">
+                          {transfer && walletNumberFormat(name)}
+                        </span>
                       </li>
                     </>
                   );

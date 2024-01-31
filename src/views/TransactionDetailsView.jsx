@@ -58,6 +58,11 @@ function TransactionDetailsView() {
     loadTransaction();
   }, []);
 
+  const walletNumberFormat = (num) => {
+    const result = num.match(/.{1,4}/g) ?? [];
+    return result.join(" ");
+  };
+
   return (
     <>
       <main>
@@ -86,8 +91,12 @@ function TransactionDetailsView() {
                 <p>
                   {transaction &&
                     (isMoneyIn
-                      ? transaction.transaction_to_details.name
-                      : transaction.transaction_from_details.name)}
+                      ? walletNumberFormat(
+                          transaction.transaction_to_details.name
+                        )
+                      : walletNumberFormat(
+                          transaction.transaction_from_details.name
+                        ))}
                 </p>
               </div>
 
@@ -102,8 +111,12 @@ function TransactionDetailsView() {
                 <p>
                   {transaction &&
                     (isMoneyIn
-                      ? transaction.transaction_from_details.name
-                      : transaction.transaction_to_details.name)}
+                      ? walletNumberFormat(
+                          transaction.transaction_from_details.name
+                        )
+                      : walletNumberFormat(
+                          transaction.transaction_to_details.name
+                        ))}
                 </p>
               </div>
 

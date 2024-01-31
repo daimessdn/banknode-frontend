@@ -49,6 +49,11 @@ function HomeView() {
     loadTransaction();
   }, []);
 
+  const walletNumberFormat = (num) => {
+    const result = num.match(/.{1,4}/g) ?? [];
+    return result.join(" ");
+  };
+
   return (
     <>
       <main>
@@ -60,7 +65,7 @@ function HomeView() {
 
             <div className="flex flex-row items-center mb-4">
               {isLoading ? (
-                <span class="skeleton skeleton-balance">&zwnj;</span>
+                <span className="skeleton skeleton-balance">&zwnj;</span>
               ) : (
                 <span className="card-amount">
                   Rp
@@ -71,11 +76,13 @@ function HomeView() {
 
             <div className="flex flex-row items-center">
               {isLoading ? (
-                <span class="skeleton skeleton-wallet-number">&zwnj;</span>
+                <span className="skeleton skeleton-wallet-number">&zwnj;</span>
               ) : (
                 <>
                   <HiCreditCard size={32} className="block me-4" />{" "}
-                  <span>{walletNumber.name}</span>
+                  <span>
+                    {walletNumber && walletNumberFormat(walletNumber.name)}
+                  </span>
                 </>
               )}
             </div>
