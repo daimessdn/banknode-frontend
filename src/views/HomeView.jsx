@@ -79,7 +79,12 @@ function HomeView() {
 
                   const formatDate = new Date(
                     transaction.createdAt
-                  ).toLocaleString("id-id", { day: "numeric", month: "short" });
+                  ).toLocaleString("id-id", {
+                    day: "numeric",
+                    month: "short",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  });
 
                   return (
                     <>
@@ -122,6 +127,8 @@ function HomeView() {
                     </>
                   );
                 })}
+
+              <li className="clear-space"></li>
             </ul>
           </section>
         </div>

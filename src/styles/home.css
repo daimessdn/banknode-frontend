@@ -191,9 +191,10 @@ main {
     position: fixed;
     bottom: 0;
     left: 50%;
-
-    box-shadow: 0px -25px 20px -20px rgba(0, 0, 0, 0.45);
     transform: translateX(-50%);
+
+    background-color: var(--paper);
+    box-shadow: 0px -25px 20px -20px rgba(0, 0, 0, 0.45);
 
     z-index: 100;
     width: 450px;
@@ -232,10 +233,18 @@ section {
     padding: 1rem 0;
 }
 
+.clear-space {
+    height: 10rem;
+}
+
 .section-title {
     font-size: 1rem;
 
     line-height: 1.5;
     margin-top: 0;
     margin-bottom: 0;
+}
+
+.profile-section {
+    padding: 0;
 }

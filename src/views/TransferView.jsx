@@ -128,7 +128,6 @@ function TransferView() {
               <label htmlFor="transfer_description">Description</label>
               <textarea
                 type="number"
-                required="required"
                 name="transfer_description"
                 id="transfer_description"
                 placeholder="Input transfer description"

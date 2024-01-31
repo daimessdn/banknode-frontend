@@ -51,7 +51,7 @@ function ProfileView() {
         <div className="container">
           <h4 className="welcome-title">Profile</h4>
 
-          <section>
+          <section className="profile-section">
             <ul className="transaction-history-container">
               <li className="transaction-history-item">
                 <Link className="flex flex-col" to="/">
