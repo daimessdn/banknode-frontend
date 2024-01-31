@@ -23,6 +23,7 @@ function TransferView() {
     transaction_amount: 0,
     transaction_description: "",
   });
+  const [isTransferLoading, setIsTransferLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -56,11 +57,7 @@ function TransferView() {
 
   const handleTransfer = async (e) => {
     e.preventDefault();
-
-    console.log({
-      ...transferFormInput,
-      transaction_amount: parseFloat(transferFormInput.transaction_amount),
-    });
+    setIsTransferLoading(true);
 
     await fetch("http://localhost:3000/api/transaction/transfer", {
       method: "post",
@@ -72,8 +69,7 @@ function TransferView() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
-
+        setIsTransferLoading(false);
         navigate("/home", { replace: true });
       });
   };
@@ -144,8 +140,14 @@ function TransferView() {
             </div>
 
             <div className="btn-group">
-              <button type="submit" className="btn btn-primary">
-                Start Transfer
+              <button
+                type="submit"
+                className="btn btn-primary"
+                disabled={isTransferLoading}
+              >
+                {isTransferLoading
+                  ? "Processing transfer..."
+                  : "Start transfer"}
               </button>
             </div>
           </form>

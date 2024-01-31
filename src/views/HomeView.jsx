@@ -16,6 +16,7 @@ function HomeView() {
   const [transactions, setTransactions] = useState([]);
   const [walletNumber, setWalletNumber] = useState("");
   const [userInfo, setUserInfo] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const loadTransaction = async () => {
     const decodedToken = jwtDecode(localStorage.getItem("token"));
@@ -39,9 +40,12 @@ function HomeView() {
         console.log(res);
         setTransactions(res.data);
       });
+
+    setIsLoading(false);
   };
 
   useEffect(() => {
+    setIsLoading(true);
     loadTransaction();
   }, []);
 
@@ -55,82 +59,101 @@ function HomeView() {
             <div className="section-title">Balance</div>
 
             <div className="flex flex-row items-center mb-4">
-              <span className="card-amount">
-                Rp{walletNumber.amount && walletNumber.amount.toLocaleString()}
-              </span>
+              {isLoading ? (
+                <span class="skeleton skeleton-balance">&zwnj;</span>
+              ) : (
+                <span className="card-amount">
+                  Rp
+                  {walletNumber.amount && walletNumber.amount.toLocaleString()}
+                </span>
+              )}
             </div>
 
             <div className="flex flex-row items-center">
-              <HiCreditCard size={32} className="block me-4" />{" "}
-              <span>{walletNumber.name}</span>
+              {isLoading ? (
+                <span class="skeleton skeleton-wallet-number">&zwnj;</span>
+              ) : (
+                <>
+                  <HiCreditCard size={32} className="block me-4" />{" "}
+                  <span>{walletNumber.name}</span>
+                </>
+              )}
             </div>
           </div>
+          {isLoading ? (
+            <div className="loading-container">
+              <div className="loader"></div>
+            </div>
+          ) : (
+            <section>
+              <h2 className="section-title">Transaction History</h2>
+              <ul className="transaction-history-container">
+                {transactions &&
+                  transactions.map((transaction) => {
+                    const isMoneyIn =
+                      transaction.transaction_from_details.name ==
+                      walletNumber.name;
 
-          <section>
-            <h2 className="section-title">Transaction History</h2>
-            <ul className="transaction-history-container">
-              {transactions &&
-                transactions.map((transaction) => {
-                  const isMoneyIn =
-                    transaction.transaction_from_details.name ==
-                    walletNumber.name;
+                    const { id, transaction_from, transaction_to } =
+                      transaction;
 
-                  const { id, transaction_from, transaction_to } = transaction;
+                    const formatDate = new Date(
+                      transaction.createdAt
+                    ).toLocaleString("id-id", {
+                      day: "numeric",
+                      month: "short",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    });
 
-                  const formatDate = new Date(
-                    transaction.createdAt
-                  ).toLocaleString("id-id", {
-                    day: "numeric",
-                    month: "short",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  });
-
-                  return (
-                    <>
-                      <li
-                        className="transaction-history-item"
-                        key={
-                          "tx-" +
-                          id +
-                          "-" +
-                          transaction_from +
-                          "-" +
-                          transaction_to
-                        }
-                      >
-                        <Link
-                          className="flex flex-col"
-                          to={`/transaction/details/${transaction.id}`}
+                    return (
+                      <>
+                        <li
+                          className="transaction-history-item"
+                          key={
+                            "tx-" +
+                            id +
+                            "-" +
+                            transaction_from +
+                            "-" +
+                            transaction_to
+                          }
                         >
-                          <span className="flex flex-row items-center">
-                            <HiArrowsRightLeft
-                              strokeWidth={1}
-                              size={18}
-                              className="me-4"
-                            />
-                            {isMoneyIn
-                              ? `${transaction.transaction_to_details.user_details.name}`
-                              : `${transaction.transaction_from_details.user_details.name}`}{" "}
-                            {`(${formatDate})`}
-                          </span>
-
-                          <span
-                            className={isMoneyIn ? "balance-out" : "balance-in"}
+                          <Link
+                            className="flex flex-col"
+                            to={`/transaction/details/${transaction.id}`}
                           >
-                            {transaction &&
-                              "Rp" +
-                                transaction.transaction_amount.toLocaleString()}
-                          </span>
-                        </Link>
-                      </li>
-                    </>
-                  );
-                })}
+                            <span className="flex flex-row items-center">
+                              <HiArrowsRightLeft
+                                strokeWidth={1}
+                                size={18}
+                                className="me-4"
+                              />
+                              {isMoneyIn
+                                ? `${transaction.transaction_to_details.user_details.name}`
+                                : `${transaction.transaction_from_details.user_details.name}`}{" "}
+                              {`(${formatDate})`}
+                            </span>
 
-              <li className="clear-space"></li>
-            </ul>
-          </section>
+                            <span
+                              className={
+                                isMoneyIn ? "balance-out" : "balance-in"
+                              }
+                            >
+                              {transaction &&
+                                "Rp" +
+                                  transaction.transaction_amount.toLocaleString()}
+                            </span>
+                          </Link>
+                        </li>
+                      </>
+                    );
+                  })}
+
+                <li className="clear-space"></li>
+              </ul>
+            </section>
+          )}
         </div>
       </main>
 

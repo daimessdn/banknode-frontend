@@ -5,9 +5,11 @@
     */
 
     --primary: #090c9b;
-    --secondary: #fbfff1;
+    --secondary: #fff;
     --outline: #3c3744;
     --text: #3c3744;
+
+    --disabled: #252323;
 }
 
 .form-group {
@@ -62,4 +64,9 @@
 .btn-group {
     display: flex;
     gap: .5rem;
+}
+
+.btn:disabled {
+    background-color: var(--disabled) !important;
+    color: var(--secondary) !important;
 }
